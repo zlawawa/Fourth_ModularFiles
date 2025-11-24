@@ -81,11 +81,12 @@ void FillOutTFiles(vector<vector<int>> &matrix, int &n, int &m) {
         }
         std::cout << "\n";
     }
+    std::cout << "\n";
 }
 
 //Matrix28
-int taskMatrix28(vector<vector<int>> &matrix){
-    std::cout << "Задача №1 - Matrix28. \n";
+int taskMatrix28Console(vector<vector<int>> &matrix) {
+    std::cout << "=== Задача №1 - Matrix28 === \n";
     vector<int> MaxsM;
     int n = matrix.size();
     int m = matrix[0].size();
@@ -110,15 +111,53 @@ int taskMatrix28(vector<vector<int>> &matrix){
     std::cout << "Максимальные эл-ты столбцов: ";
     for (int i = 0; i < m; i++) {
         std::cout << MaxsM[i];
-        if (i < m - 1){
+        if (i < m - 1) {
             std::cout << " ";
         }
     }
     std::cout << "\n";
-    std::cout << "Минимальный элемент среди максимальных в столбце: " << MinOfMax << "\n\n";
-    std::cout << "Конец задачи.\n\n";
+    std::cout << "Минимальный элемент среди максимальных в столбце: " << MinOfMax << "\n";
     return MinOfMax;
 }
+
+void taskMatrix28File(vector<vector<int>> &matrix) {
+    ofstream f2("LBW4Answers.txt", ios::out);
+    vector<int> MaxsM;
+
+    if (f2.is_open()) {
+        int n = matrix.size();
+        int m = matrix[0].size();
+        for (int i = 0; i < m; i++) {
+            MaxsM.push_back(-10000);
+        }
+        for (int j = 0; j < m; j++) {
+            for (int i = 0; i < n; i++) {
+                if (matrix[i][j] > MaxsM[j]) {
+                    MaxsM[j] = matrix[i][j];
+                }
+            }
+        }
+        int MinOfMax = MaxsM[0];
+        for (int i = 0; i < m; i++) {
+            if (MaxsM[i] < MinOfMax) {
+                MinOfMax = MaxsM[i];
+            }
+        }
+        f2 << "Максимальные эл-ты столбцов: ";
+        for (int i = 0; i < m; i++) {
+            f2 << MaxsM[i];
+            if (i < m - 1) {
+                f2 << " ";
+            }
+        }
+        f2 << "\n";
+        f2 << "Минимальный элемент среди максимальных в столбце: " << MinOfMax << "\n";
+    }
+    f2.close();
+    std::cout << "Ответы на задачу записаны в файл 'LBW4Answers.txt'. \n";
+    std::cout << "======= Конец задачи =======\n\n";
+}
+
 
 
 //Matrix55
