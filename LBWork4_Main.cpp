@@ -12,7 +12,7 @@ using namespace std;
 
 int ChooseMethod(){
     int choice;
-    std::cout << "Выберите способ зполнения двумерного массива:\n";
+    std::cout << "\nВыберите способ зполнения двумерного массива:\n";
     std::cout << "1. С клавиатуры;       \n";
     std::cout << "2. Случайными числами; \n";
     std::cout << "3. Из файла;           \n";
@@ -43,74 +43,62 @@ int main() {
     std::vector<vector<int>> matrix;
     int Choice1, Choice2;
     Choice1 = ChooseMethod();
-    Choice2 = ChooseTask();
-    //do{
-    if (Choice1 == 0 || Choice2 == 0){
-        std::cout << "Выход из программы...\n";
-        std::cout << "Работа завершена.\n";
-        return 0;
-    }
-
-    bool completed1 = false, completed2 = false;
-    switch (Choice1) {  
-        case 1: {
-            FillKeyboard(matrix);
-            completed1 = true;
-            break;
-        }case 2: {
-            int n, m;
-            std::cout << "Введите размер массива n * m.\n";
-            std::cout << "Введите количество строк: ";
-            std::cin >> n;
-            std::cout << "Введите количество столбцов: ";
-            std::cin >> m;
-            cin.ignore(1000, '\n');
-
-            FillRandom(matrix, n, m);
-            completed1 = true;
-            break;
-        }case 3: {
-            int n, m;
-            FillOutTFiles(matrix, n, m);
-            completed1 = true;
-            break;
-        }default: {
-            std::cout << "Вы неверно ввели данные.\n";
-            std::cout << "\n";
-            return 1;
+    do {
+        switch (Choice1) {  
+            case 1: {
+                FillKeyboard(matrix);
+                break;
+            }case 2: {
+                int n, m;
+                std::cout << "Введите размер массива n * m.\n";
+                std::cout << "Введите количество строк: ";
+                std::cin >> n;
+                std::cout << "Введите количество столбцов: ";
+                std::cin >> m;
+                cin.ignore(1000, '\n');
+                FillRandom(matrix, n, m);
+                break;
+            }case 3: {
+                int n, m;
+                FillOutTFiles(matrix, n, m);
+                break;
+            }case 0: {
+                std::cout << "Выход из программы...\n";
+                std::cout << "Работа завершена.\n";
+                return 0;
+            }default: {
+                std::cout << "Вы неверно ввели данные.\n";
+                return 1;
+            }
         }
-    }
-    if (!completed1) {
-        std::cout << "Ошибка заполнения матрицы!\n";
-        return 1;
-    }
-
-    switch(Choice2){
-        case 1: {
-            int n, m;
-            taskMatrix28(matrix);
-            completed2 = true;
-            break;
-        }case 2: {
-            taskMatrix55();
-            completed2 = true;
-            break;
-        }case 3: {
-            taskDArray6();
-            completed2 = true;
-            break;
-        }case 4: {
-            taskDArray16();
-            completed2 = true;
-            break;
-        }default: {
-            std::cout << "Ошибка выбора задачи!\n";
-            break;
-        }
-    }
-    if (completed2) {
-    std::cout << "Работа завершена.\n";
-    }  
-    //}while (!(Choice1 == 0 || Choice2 == 0));
+        do {
+            Choice2 = ChooseTask();
+            switch(Choice2){
+                case 1: {
+                    int n, m;
+                    taskMatrix28Console(matrix);
+                    taskMatrix28File(matrix);
+                    break;
+                }case 2: {
+                    taskMatrix55();
+                    break;
+                }case 3: {
+                    taskDArray6();
+                    break;
+                }case 4: {
+                    taskDArray16();
+                    break;
+                }case 0: {
+                    std::cout << "Выход из программы...\n";
+                    std::cout << "Работа завершена.\n";
+                    return 0;
+                }default: {
+                    std::cout << "Ошибка выбора задачи! Выберите ещё раз...\n";
+                    std::cout << "\n";
+                    break;
+                }
+            }
+        }while (Choice2 != 0);
+    }while (true);
     return 0;
 } 
