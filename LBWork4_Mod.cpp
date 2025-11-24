@@ -87,30 +87,30 @@ void FillOutTFiles(vector<vector<int>> &matrix, int &n, int &m) {
 //Matrix28
 int taskMatrix28Console(vector<vector<int>> &matrix) {
     std::cout << "=== Задача №1 - Matrix28 === \n";
-    vector<int> MaxsM;
+    vector<int> MaxOfElCol;
     int n = matrix.size();
     int m = matrix[0].size();
 
     for (int i = 0; i < m; i++){
-        MaxsM.push_back(-100000);
+        MaxOfElCol.push_back(-100000);
     }
     //ищем максимум столбцов
     for (int j = 0; j < m; j++) { 
         for (int i = 0; i < n; i++) {
-            if (matrix[i][j] > MaxsM[j]){
-                MaxsM[j] = matrix[i][j];
+            if (matrix[i][j] > MaxOfElCol[j]){
+                MaxOfElCol[j] = matrix[i][j];
             }
         }
     }
-    int MinOfMax = MaxsM[0]; //минимальный среди максимальных значений
+    int MinOfMax = MaxOfElCol[0]; //минимальный среди максимальных значений
     for (int i = 1; i < m; i++) {
-        if (MaxsM[i] < MinOfMax) {
-            MinOfMax = MaxsM[i];
+        if (MaxOfElCol[i] < MinOfMax) {
+            MinOfMax = MaxOfElCol[i];
         }
     }
     std::cout << "Максимальные эл-ты столбцов: ";
     for (int i = 0; i < m; i++) {
-        std::cout << MaxsM[i];
+        std::cout << MaxOfElCol[i];
         if (i < m - 1) {
             std::cout << " ";
         }
@@ -122,30 +122,30 @@ int taskMatrix28Console(vector<vector<int>> &matrix) {
 
 void taskMatrix28File(vector<vector<int>> &matrix) {
     ofstream f2("LBW4Answers.txt", ios::out);
-    vector<int> MaxsM;
+    vector<int> MaxOfElCol;
 
     if (f2.is_open()) {
         int n = matrix.size();
         int m = matrix[0].size();
         for (int i = 0; i < m; i++) {
-            MaxsM.push_back(-10000);
+            MaxOfElCol.push_back(-10000);
         }
         for (int j = 0; j < m; j++) {
             for (int i = 0; i < n; i++) {
-                if (matrix[i][j] > MaxsM[j]) {
-                    MaxsM[j] = matrix[i][j];
+                if (matrix[i][j] > MaxOfElCol[j]) {
+                    MaxOfElCol[j] = matrix[i][j];
                 }
             }
         }
-        int MinOfMax = MaxsM[0];
+        int MinOfMax = MaxOfElCol[0];
         for (int i = 0; i < m; i++) {
-            if (MaxsM[i] < MinOfMax) {
-                MinOfMax = MaxsM[i];
+            if (MaxOfElCol[i] < MinOfMax) {
+                MinOfMax = MaxOfElCol[i];
             }
         }
         f2 << "Максимальные эл-ты столбцов: ";
         for (int i = 0; i < m; i++) {
-            f2 << MaxsM[i];
+            f2 << MaxOfElCol[i];
             if (i < m - 1) {
                 f2 << " ";
             }
