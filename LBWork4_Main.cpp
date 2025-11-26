@@ -6,18 +6,18 @@
 #include <vector>
 #include <string>
 #include "LBWork4.h"
-#include <windows.h> 
+#include <windows.h>
 
 using namespace std;
 
 int ChooseMethod(){
     int choice;
-    std::cout << "\nВыберите способ зполнения двумерного массива:\n";
+    std::cout << "\nВыберите способ заполнения двумерного массива:\n";
     std::cout << "1. С клавиатуры;       \n";
     std::cout << "2. Случайными числами; \n";
     std::cout << "3. Из файла;           \n";
     std::cout << "0. Выход.            \n";
-    std:cout << "Ваш выбор? ";
+    std::cout << "Ваш выбор? ";
     std::cin >> choice;
     std::cout << "\n";
     return choice;
@@ -80,10 +80,12 @@ int main() {
                     taskMatrix28File(matrix);
                     break;
                 }case 2: {
-                    taskMatrix55();
+                    taskMatrix55(matrix);
+                    taskMatrix55File(matrix);
                     break;
                 }case 3: {
-                    taskDArray6();
+                    taskDArray6(matrix);
+                    taskDArray6File(matrix);
                     break;
                 }case 4: {
                     taskDArray16();
