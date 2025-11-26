@@ -16,9 +16,9 @@ void FillKeyboard(vector<vector<int>> &matrix) {
     std::cin >> n;
     std::cout << "Введите количество столбцов: ";
     std::cin >> m;
-    matrix.resize(n);          // cоздаем n строк
+    matrix.resize(n);          
     for (int i = 0; i < n; i++) {
-        matrix[i].resize(m);   // в каждой строке создаем m столбцов
+        matrix[i].resize(m);   
     }
     std::cout << "Введите элементы матрицы: \n";
     for (int i = 0; i < n; i++) {
@@ -36,9 +36,9 @@ void FillKeyboard(vector<vector<int>> &matrix) {
 
 void FillRandom(vector<vector<int>> &matrix, int n, int m) {
     matrix.clear();
-    matrix.resize(n);          // cоздаем n строк
+    matrix.resize(n);         
     for (int i = 0; i < n; i++) {
-        matrix[i].resize(m);   // в каждой строке создаем m столбцов
+        matrix[i].resize(m); 
     }
     srand(time(0));
     for (int i = 0; i < n; i++) {
@@ -158,33 +158,121 @@ void taskMatrix28File(vector<vector<int>> &matrix) {
     std::cout << "======= Конец задачи =======\n\n";
 }
 
-
-
 //Matrix55
-int taskMatrix55(){
-    std::cout << "Задача №2 - Matrix58. \n";
-    // int n,m;
-    // std::cout << "Введите размерность матрицы.\n";
-    // std::cout << "Введите кол-во столбцов - четное число: \n";
-    // std::cout << "Введите кол-во строк - четное число: \n";
-    // std::cin >> n >> m;
-    // if (m % 2 == 0 && n % 2 ==0){
-    //     // дописать формирование матрицы
-    //     //и поменять местами половины главной диагонали?
-    // }else{
-    //     std::cout << "Вы ввели неверные данные. Перезапустите программу и попробуйте ещё раз.\n";
-    // }
-    std::cout << "Конец задачи.\n";
-    std::cout << "\n";
+int taskMatrix55(vector<vector<int>> &matrix) {
+    std::cout << "=== Задача №2 - Matrix55 ===";
+    int n = matrix.size();
+    int m = matrix[0].size();
+
+    if (n % 2 != 0) {
+        std::cout << "Ошибка, n должно быть чётным числом. Попробуйте ещё раз. \n";
+        return 1;
+    } else {
+        int half = n / 2;
+        for (int i = 0; i < half; i++) {
+            for (int j = 0; j < m; j++) {
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[i + half][j];
+                matrix[i + half][j] = tmp;
+            }
+        }
+        std::cout << "\n";
+        std::cout << "Итоговая матрица: \n\n";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                std::cout << matrix[i][j] << " ";
+            }
+            std::cout << "\n";
+        }
+        std::cout << "\n";
+    }
     return 0;
 }
 
-//DArray6
-int taskDArray6(){
-    std::cout << "3. Задача №3 - DArray6.\n";
+void taskMatrix55File(vector<vector<int>> &matrix) {
+    ofstream f2("LBW4Answers.txt", ios::out);
+    int n = matrix.size();
+    int m = matrix[0].size();
 
-    std::cout << "Конец задачи.\n";
-    std::cout << "\n";
+    if (n % 2 != 0) {
+        std::cout << "======= Конец задачи =======\n\n";
+        return;
+    } else {
+        int half = n / 2;
+        vector<vector<int>> result = matrix;
+        for (int i = 0; i < half; i++) {
+            for (int j = 0; j < m; j++) {
+                int temp = result[i][j];
+                result[i][j] = result[i + half][j];
+                result[i + half][j] = temp;
+            }
+        }
+        f2 << "Итоговая матрица: \n";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                f2 << matrix[i][j] << " ";
+            }
+            f2 << "\n";
+        }
+        f2 << "\n";
+    }
+    f2.close();
+    std::cout << "Результаты записаны в файл 'LBW4Answers.txt'.\n";
+    std::cout << "======= Конец задачи =======\n\n";
+}
+
+//DArray6
+int taskDArray6(vector<vector<int>> &matrixA) {
+    std::cout << "=== Задача №3 - DArray6 ===\n";
+    int n = matrixA.size();
+    int m = matrixA[0].size();
+
+    if (n != m) {
+        std::cout << "Матрица должна быть квадратной!\n";
+        return 1;
+    } else {
+        vector<vector<int>> matrixB = matrixA;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (i >= j) { matrixB[i][j] = 0; }
+            }
+        }
+        std::cout << "Итоговая матрица: \n";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                std::cout << matrixB[i][j] << " ";
+            }
+            std::cout << "\n";
+        }
+    }
+    return 0;
+}
+
+int taskDArray6File(std::vector<std::vector<int>> &matrixA) {
+    ofstream f2("LBW4Answers.txt", ios::out);
+    int n = matrixA.size();
+    int m = matrixA[0].size();
+
+    if (n != m) {
+        std::cout << "======= Конец задачи =======\n\n";
+        return 1;
+    } else {
+        vector<vector<int>> matrixB = matrixA;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (i >= j) { matrixB[i][j] = 0; }
+            }
+        }
+        f2 << "Итоговая матрица: \n";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                f2 << matrixB[i][j] << " ";
+            }
+            f2 << "\n";
+        }
+        std::cout << "Результаты записаны в файл 'LBW4Answers.txt'.\n";
+        std::cout << "======= Конец задачи =======\n\n";
+    }
     return 0;
 }
 
