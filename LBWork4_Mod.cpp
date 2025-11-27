@@ -86,6 +86,10 @@ void FillOutTFiles(vector<vector<int>> &matrix, int &n, int &m) {
 
 //Matrix28
 int taskMatrix28Console(vector<vector<int>> &matrix) {
+    if (matrix.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return 1;
+    }
     std::cout << "=== Задача №1 - Matrix28 === \n";
     vector<int> MaxOfElCol;
     int n = matrix.size();
@@ -94,7 +98,7 @@ int taskMatrix28Console(vector<vector<int>> &matrix) {
     for (int i = 0; i < m; i++){
         MaxOfElCol.push_back(-100000);
     }
-    //ищем максимум столбцов
+    
     for (int j = 0; j < m; j++) { 
         for (int i = 0; i < n; i++) {
             if (matrix[i][j] > MaxOfElCol[j]){
@@ -102,7 +106,7 @@ int taskMatrix28Console(vector<vector<int>> &matrix) {
             }
         }
     }
-    int MinOfMax = MaxOfElCol[0]; //минимальный среди максимальных значений
+    int MinOfMax = MaxOfElCol[0]; 
     for (int i = 1; i < m; i++) {
         if (MaxOfElCol[i] < MinOfMax) {
             MinOfMax = MaxOfElCol[i];
@@ -121,6 +125,10 @@ int taskMatrix28Console(vector<vector<int>> &matrix) {
 }
 
 void taskMatrix28File(vector<vector<int>> &matrix) {
+    if (matrix.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return;
+    }
     ofstream f2("LBW4Answers.txt", ios::out);
     vector<int> MaxOfElCol;
 
@@ -160,6 +168,10 @@ void taskMatrix28File(vector<vector<int>> &matrix) {
 
 //Matrix55
 int taskMatrix55(vector<vector<int>> &matrix) {
+    if (matrix.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return 1;
+    }
     std::cout << "=== Задача №2 - Matrix55 ===";
     int n = matrix.size();
     int m = matrix[0].size();
@@ -190,6 +202,10 @@ int taskMatrix55(vector<vector<int>> &matrix) {
 }
 
 void taskMatrix55File(vector<vector<int>> &matrix) {
+    if (matrix.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return;
+    }
     ofstream f2("LBW4Answers.txt", ios::out);
     int n = matrix.size();
     int m = matrix[0].size();
@@ -223,6 +239,10 @@ void taskMatrix55File(vector<vector<int>> &matrix) {
 
 //DArray6
 int taskDArray6(vector<vector<int>> &matrixA) {
+    if (matrixA.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return 1;
+    }
     std::cout << "=== Задача №3 - DArray6 ===\n";
     int n = matrixA.size();
     int m = matrixA[0].size();
@@ -249,6 +269,10 @@ int taskDArray6(vector<vector<int>> &matrixA) {
 }
 
 int taskDArray6File(std::vector<std::vector<int>> &matrixA) {
+    if (matrixA.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return 1;
+    }
     ofstream f2("LBW4Answers.txt", ios::out);
     int n = matrixA.size();
     int m = matrixA[0].size();
@@ -277,10 +301,92 @@ int taskDArray6File(std::vector<std::vector<int>> &matrixA) {
 }
 
 //DArray16
-int taskDArray16(){
-    std::cout << "4. Задача №4 - DArray16. \n";
-
-    std::cout << "Конец задачи. \n";
+int taskDArray16(vector<vector<int>> &matrix){
+    std::cout << "=== Задача №4 - DArray16 ===\n";
+    if (matrix.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return 1;
+    }
+    int n = matrix.size();
+    int m = matrix[0].size();
+    int cnt = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int sumN = 0;
+            int cntN = 0;
+            if (i > 0) { // сверху
+                sumN += matrix[i-1][j];
+                cntN++;
+            }
+            if (i < n-1) { // снизу
+                sumN += matrix[i+1][j];
+                cntN++;
+            }
+            if (j > 0) { // слева
+                sumN += matrix[i][j-1];
+                cntN++;
+            }
+            if (j < m-1) { // справа
+                sumN += matrix[i][j+1];
+                cntN++;
+            }
+            if (cntN > 0 && matrix[i][j] == sumN) {
+                cnt++;
+                std::cout << "Элемент [" << i + 1 << "][" << j + 1 << "]" << " равен сумме соседей: " << sumN << "\n";
+            }
+        }
+    }
+    std::cout << "Кол-во таких элементов: " << cnt << "\n";
     std::cout << "\n";
+    return 0;
+}
+
+int taskDArrey16File(vector<vector<int>> &matrix) {
+    ofstream f2("LBW4Answers.txt", ios::out);
+    if (matrix.empty()) {
+        std::cout << "Матрица пуста. \n";
+        return 1;
+    }
+    int n = matrix.size();
+    int m = matrix[0].size();
+    int cnt = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int sumN = 0;
+            int cntN = 0;
+            if (i > 0) { // сверху
+                sumN += matrix[i-1][j];
+                cntN++;
+            }
+            if (i < n-1) { // снизу
+                sumN += matrix[i+1][j];
+                cntN++;
+            }
+            if (j > 0) { // слева
+                sumN += matrix[i][j-1];
+                cntN++;
+            }
+            if (j < m-1) { // справа
+                sumN += matrix[i][j+1];
+                cntN++;
+            }
+            if (cntN > 0 && matrix[i][j] == sumN) {
+                cnt++;
+                f2 << "Элемент [" << i + 1 << "][" << j + 1 << "]" << " равен сумме соседей: " << sumN << "\n";
+            }
+        }
+    }
+    f2 << "Кол-во таких элементов: " << cnt << "\n";
+    std::cout << "Результаты записаны в файл 'LBW4Answers.txt'.\n";
+    std::cout << "======= Конец задачи =======\n\n";
+    return 0;
+}
+int cat() {
+    std::cout << "  /\\_/\\     /\\_/\\     /\\_/\\" << "\n";
+    std::cout << " ( ^.^ )   ( 0.0 )   ( ^.^ )" << "\n";
+    std::cout << "  > ^ <     > ^ <     > ^ <" << "\n";
+    std::cout << " /  |  \\ / /  |  \\ / /  |  \\ /" << "\n";
+    std::cout << " \\  |  //  \\  |  //  \\  |  //" << "\n";
+    std::cout << "  ^^ ^^     ^^ ^^     ^^ ^^" << "\n";
     return 0;
 }
