@@ -88,7 +88,9 @@ int main() {
                     taskDArray6File(matrix);
                     break;
                 }case 4: {
-                    taskDArray16();
+                    taskDArray16(matrix);
+                    taskDArrey16File(matrix);
+                    cat();
                     break;
                 }case 0: {
                     std::cout << "Выход из программы...\n";
