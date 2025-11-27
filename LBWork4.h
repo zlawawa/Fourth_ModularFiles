@@ -17,8 +17,9 @@ void taskMatrix55File(std::vector<std::vector<int>> &matrix);
 int taskDArray6(std::vector<std::vector<int>> &matrixA);
 int taskDArray6File(std::vector<std::vector<int>> &matrixA);
 
-int taskMatrix55();
-int taskDArray6();
-int taskDArray16();
+int taskDArray16(std::vector<std::vector<int>> &matrix);
+int taskDArrey16File(std::vector<std::vector<int>> &matrix);
+
+int cat();
 
 #endif
