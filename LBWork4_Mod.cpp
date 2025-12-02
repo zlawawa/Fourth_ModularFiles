@@ -354,20 +354,20 @@ int taskDArrey16File(vector<vector<int>> &matrix) {
         for (int j = 0; j < m; j++) {
             int sumN = 0;
             int cntN = 0;
-            if (i > 0) { // сверху
-                sumN += matrix[i-1][j];
+            if (i > 0) { //сверху
+                sumN += matrix[i - 1][j];
                 cntN++;
             }
-            if (i < n-1) { // снизу
-                sumN += matrix[i+1][j];
+            if (i < n - 1) { //снизу
+                sumN += matrix[i + 1][j];
                 cntN++;
             }
-            if (j > 0) { // слева
-                sumN += matrix[i][j-1];
+            if (j > 0) { //слева
+                sumN += matrix[i][j - 1];
                 cntN++;
             }
-            if (j < m-1) { // справа
-                sumN += matrix[i][j+1];
+            if (j < m - 1) { //справа
+                sumN += matrix[i][j + 1];
                 cntN++;
             }
             if (cntN > 0 && matrix[i][j] == sumN) {
@@ -390,3 +390,4 @@ int cat() {
     std::cout << "  ^^ ^^     ^^ ^^     ^^ ^^" << "\n";
     return 0;
 }
+
