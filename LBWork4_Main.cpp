@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "LBWork4.h"
+#include "Array_LBW4.h"
 #include <windows.h>
 
 using namespace std;
@@ -13,10 +13,10 @@ using namespace std;
 int ChooseMethod(){
     int choice;
     std::cout << "\nВыберите способ заполнения двумерного массива:\n";
-    std::cout << "1. С клавиатуры;       \n";
+    std::cout << "1. С клавиатуры; \n";
     std::cout << "2. Случайными числами; \n";
-    std::cout << "3. Из файла;           \n";
-    std::cout << "0. Выход.            \n";
+    std::cout << "3. Из файла; \n";
+    std::cout << "0. Выход. \n";
     std::cout << "Ваш выбор? ";
     std::cin >> choice;
     std::cout << "\n";
@@ -48,7 +48,7 @@ int main() {
             case 1: {
                 FillKeyboard(matrix);
                 break;
-            }case 2: {
+            } case 2: {
                 int n, m;
                 std::cout << "Введите размер массива n * m.\n";
                 std::cout << "Введите количество строк: ";
@@ -58,15 +58,15 @@ int main() {
                 cin.ignore(1000, '\n');
                 FillRandom(matrix, n, m);
                 break;
-            }case 3: {
+            } case 3: {
                 int n, m;
                 FillOutTFiles(matrix, n, m);
                 break;
-            }case 0: {
+            } case 0: {
                 std::cout << "Выход из программы...\n";
                 std::cout << "Работа завершена.\n";
                 return 0;
-            }default: {
+            } default: {
                 std::cout << "Вы неверно ввели данные.\n";
                 return 1;
             }
@@ -79,30 +79,30 @@ int main() {
                     taskMatrix28Console(matrix);
                     taskMatrix28File(matrix);
                     break;
-                }case 2: {
+                } case 2: {
                     taskMatrix55(matrix);
                     taskMatrix55File(matrix);
                     break;
-                }case 3: {
+                } case 3: {
                     taskDArray6(matrix);
                     taskDArray6File(matrix);
                     break;
-                }case 4: {
+                } case 4: {
                     taskDArray16(matrix);
                     taskDArrey16File(matrix);
                     cat();
                     break;
-                }case 0: {
+                } case 0: {
                     std::cout << "Выход из программы...\n";
                     std::cout << "Работа завершена.\n";
                     return 0;
-                }default: {
+                } default: {
                     std::cout << "Ошибка выбора задачи! Выберите ещё раз...\n";
                     std::cout << "\n";
                     break;
                 }
             }
-        }while (Choice2 != 0);
-    }while (true);
+        } while (Choice2 != 0);
+    } while (true);
     return 0;
 } 
