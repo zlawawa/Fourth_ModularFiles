@@ -1,12 +1,11 @@
-#ifndef H_H
-#define H_H
+#ifndef LBWork4_H
+#define LBWork4_H
 
 #include <vector>
 #include <string>
 
-void FillKeyboard(std::vector<std::vector<int>> &matrix);
-void FillRandom(std::vector<std::vector<int>> &matrix, int n, int m);
-void FillOutTFiles(std::vector<std::vector<int>> &matrix, int &n, int &m);
+int Matrix1(std::vector<std::vector<int>> &matrix, int n, int m);
+int Matrix2(std::vector<std::vector<int>> &matrix, int n, int m);
 
 int taskMatrix28Console(std::vector<std::vector<int>> &matrix);
 void taskMatrix28File(std::vector<std::vector<int>> &matrix);
