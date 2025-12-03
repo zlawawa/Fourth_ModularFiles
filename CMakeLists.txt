@@ -3,4 +3,4 @@ project(Fourth_ModularFiles)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Fourth_ModularFiles LBWork4_Main.cpp LBWork4_Mod.cpp)
+add_executable(Fourth_ModularFiles LBWork4_Main.cpp LBWork4_Mod.cpp Array_LBW4.cpp)
