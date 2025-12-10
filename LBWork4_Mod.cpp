@@ -47,6 +47,7 @@ int taskMatrix28Console(vector<vector<int>> &matrix) {
 
 void taskMatrix28File(vector<vector<int>> &matrix) {
     ofstream f2("LBW4Answers.txt", ios::out);
+    
     if (matrix.empty()) {
         std::cout << "Матрица пуста. \n";
         return;
@@ -96,9 +97,9 @@ int taskMatrix55(vector<vector<int>> &matrix) {
         int half = n / 2;
         for (int i = 0; i < half; i++) {
             for (int j = 0; j < m; j++) {
-                int tmp = matrix[i][j];
-                matrix[i][j] = matrix[i + half][j];
-                matrix[i + half][j] = tmp;
+                int tmp = matrix[i][j]; //создаем временную переменную для сохранения верхней части матрицы
+                matrix[i][j] = matrix[i + half][j]; //присваиваем эл-ту верхней части - эл-т в нижней части матрицы
+                matrix[i + half][j] = tmp; //присваиваем эл-ту нижней части сохраненную временную верхнюю часть
             }
         }
         std::cout << "\n";
@@ -203,7 +204,7 @@ int taskDArray6File(std::vector<std::vector<int>> &matrixA) {
 
 //DArray16
 int taskDArray16(vector<vector<int>> &matrix){
-    std::cout << "=== Задача №4 - DArray16 ===\n";
+    std::cout << "=== Задача №4 - DArray16 ===";
     if (matrix.empty()) {
         std::cout << "Матрица пуста. \n";
         return 1;
@@ -262,11 +263,11 @@ int taskDArrey16File(vector<vector<int>> &matrix) {
                 sumN += matrix[i-1][j];
                 cntN++;
             }
-            if (i < n-1) { // снизу
+            if (i < n-1) { //снизу
                 sumN += matrix[i+1][j];
                 cntN++;
             }
-            if (j > 0) { // слева
+            if (j > 0) { //слева
                 sumN += matrix[i][j-1];
                 cntN++;
             }
@@ -285,4 +286,4 @@ int taskDArrey16File(vector<vector<int>> &matrix) {
     std::cout << "======= Конец задачи =======\n\n";
     return 0;
 }
-
+}
