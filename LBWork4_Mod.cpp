@@ -259,7 +259,7 @@ int taskDArrey16File(vector<vector<int>> &matrix) {
         for (int j = 0; j < m; j++) {
             int sumN = 0;
             int cntN = 0;
-            if (i > 0) { // сверху
+            if (i > 0) { //сверху
                 sumN += matrix[i-1][j];
                 cntN++;
             }
@@ -271,7 +271,7 @@ int taskDArrey16File(vector<vector<int>> &matrix) {
                 sumN += matrix[i][j-1];
                 cntN++;
             }
-            if (j < m-1) { // справа
+            if (j < m-1) { //справа
                 sumN += matrix[i][j+1];
                 cntN++;
             }
@@ -287,3 +287,4 @@ int taskDArrey16File(vector<vector<int>> &matrix) {
     return 0;
 }
 }
+
